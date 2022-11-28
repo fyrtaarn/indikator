@@ -1,0 +1,156 @@
+#+title: Indikatorer for løpende statistikk
+
+#+options: toc:1 author:nil \n:t num:2
+#+language: no
+
+Indikatorer er basert på FMDS skjema, dvs. skadde pasienter /(eller skadde hendelser?)/ behandlet i helsevesenet
+
+* Hardt skadd i trafikkulykke
+*** Definisjon
+Alle hardt skadde pasienter med AIS 3+ hvor trafikkulykke var skadeårsak.
+*** Ekskluderer
+Alle skadde pasienter med annen enn trafikkulykke som kontaktårsak til skade.
+*** Inkluderer
+Alle skadde pasienter hvor trafikkulykke er kontaktårsak til skade.
+*** Beregning av indikatorer
+- Hovedmåltall \\
+  Tallene skal vise antall og andel hardt skadde pasienter med AIS 3+.
+- Andre måltall
+  1. Antall og andel pasienter fordelt på kjønn
+  2. Antall og andel pasienter fordelt på aldersgrupper.
+  3. Antall og andel pasienter fordelt på trafikant typer:
+     - Bilførere og passasjerer
+     - Motorsyklister og mopedister
+     - Syklende
+     - Gående
+     - Andre trafikanter
+  4. Antall og andel pasienter fordelt for skadested
+*** Teknisk beregning og bearbeiding av data
+- Alle skadde pasienter som har /Ulykkesskade/ som svar til spørsmål om
+  /Kontaktårsak skade/ vil bli inkludert dvs. =kode 1=.
+- Hardt skadd er pasienter med /Alvorlig skade (AIS 3+)/ på spørsmål om
+  /Alvorlighetsgrad skade/ dvs. =kode 3=
+- Trafikant typer gjelder når spørsmål om /Skadested/ ble besvart med =kode V1=
+  dvs. "trafikkulykke", så skal det velges "fremkomstmiddel" dvs.
+  | type                   | kode | kategori                     |
+  |------------------------+------+------------------------------|
+  | Til fots               | F    | Gående                       |
+  | Sykkel                 | S    | Syklende                     |
+  | Elektrisk sykkel       | E    | Syklende                     |
+  | Elektrisk sparkesykkel | G    | Syklende                     |
+  | Moped                  | M    | Motorsyklister og mopedister |
+  | Motorsykkel            | G    | Motorsyklister og mopedister |
+  | Personbil, varebil     | P    | Bilførere og passasjerer     |
+  | Lastebil               | L    | Bilførere og passasjerer     |
+  | Buss                   | B    |                              |
+  | Trikk/tog/bane         | T    |                              |
+  | ATV "firhjuling"       | V    |                              |
+  | Snøskuter              | Q    |                              |
+  | Vannskuter             | R    |                              |
+  | Ski, snøbrett          | K    |                              |
+  | Annen fremkomstmiddel  | A    | Andre trafikanter            |
+  | Ukjent fremkomstmiddel | U    | Andre trafikanter            |
+- Ved små tall skal ...
+
+*** Inndelinger
+- /Kjønn/ : Begge, menn, kvinner
+- /Alder/ : Alle alder, 0-17, 18-24, 25-44, 45-64, 65 år og eldre. Andre
+  aldersinndelinger er også aktuelt etter behøv fra Samferdselsmyndighetene.
+
+* Lettere skadd i trafikkulykke
+*** Definisjon
+Alle lettere skadd pasienter med AIS 1 eller 2 hvor trafikkulykke var skadeårsak.
+*** Inkluderer
+Alle skadde pasienter hvor ulykke er kontaktårsak til skade.
+*** Ekskluderer
+Alle skadde pasienter med annen enn ulykke som kontaktårsak til skade.
+*** Beregning av indikatorer
+- Hovedmåltall \\
+  Tallene skal vise antall og andel hardt skadde pasienter med AIS 1 eller 2 i
+  alt og fordelt på kjønn.
+- Andre måltall
+  1. Antall og andel pasienter fordelt på aldersgrupper.
+  2. Antall og andel pasienter fordelt på trafikant typer:
+     - Bilførere og passasjerer
+     - Motorsyklister og mopedister
+     - Syklende
+     - Gående
+     - Andre trafikanter
+
+*** Teknisk beregning og bearbeiding av data
+- Alle skadde pasienter som har /Ulykkesskade/ som svar til spørsmål om
+  /Kontaktårsak skade/ vil bli inkludert dvs. =kode 1=
+- Lettere skadd er pasienter med /Liten skade (AIS 1)/ eller /Moderat skade (AIS
+  2)/ på spørsmål om /Alvorlighetsgrad skade/ dvs. =kode 1= og =kode 2=.
+- Trafikant typer gjelder når spørsmål om /Skadested/ ble besvart med =kode V1=
+  dvs. "trafikkulykke", så skal det velges "fremkomstmiddel" dvs.
+  | type                   | kode | kategori                     |
+  |------------------------+------+------------------------------|
+  | Til fots               | F    | Gående                       |
+  | Sykkel                 | S    | Syklende                     |
+  | Elektrisk sykkel       | E    | Syklende                     |
+  | Elektrisk sparkesykkel | G    | Syklende                     |
+  | Moped                  | M    | Motorsyklister og mopedister |
+  | Motorsykkel            | G    | Motorsyklister og mopedister |
+  | Personbil, varebil     | P    | Bilførere og passasjerer     |
+  | Lastebil               | L    | Bilførere og passasjerer     |
+  | Buss                   | B    |                              |
+  | Trikk/tog/bane         | T    |                              |
+  | ATV "firhjuling"       | V    |                              |
+  | Snøskuter              | Q    |                              |
+  | Vannskuter             | R    |                              |
+  | Ski, snøbrett          | K    |                              |
+  | Annen fremkomstmiddel  | A    | Andre trafikanter            |
+  | Ukjent fremkomstmiddel | U    | Andre trafikanter            |
+- Ved små tall skal ...
+- Ved flere skadehendelser for en person ...
+
+*** Inndelinger
+- /Kjønn/ : Begge, menn, kvinner
+- /Alder/ : Alle alder, 0-17, 18-24, 25-44, 45-64, 65 år og eldre. Andre
+  aldersinndelinger er også aktuelt etter behøv fra Samferdselsmyndighetene.
+
+* Skadested
+*** Definisjon
+Skadestedet er det stedet hvor skadehendelsen oppsto eller startet. Skadestedet
+referer til kommune eller bydel.
+*** Inkluderer
+Alle skadde pasienter hvor ulykke er kontaktårsak til skade.
+*** Ekskluderer
+Alle skadde pasienter med annen enn ulykke som kontaktårsak til skade.
+*** Beregning av indikatorer
+Tallene skal vise antall og andel skadde pasienter på skadested fordelt på alvorlighetsgrad:
+- Hardt skadd (AIS +3)
+- Lettere skadd (AIS 1 eller AIS 2)
+*** Teknisk beregning og bearbeiding av data
+- Alle skadde pasienter som har /Ulykkesskade/ som svar til spørsmål om
+  /Kontaktårsak skade/ vil bli inkludert.
+- Hardt skadd er pasienter med /Liten skade (AIS 1)/, /Moderat skade (AIS2)/
+  eller /Alvorlig skade (AIS 3+)/ på spørsmål om /Alvorlighetsgrad skade/.
+- Variable om /Skadekommune\slash{}bydel/ er ikke missing.
+- Ved små tall skal ...
+*** Inndelinger
+- /Alvorlighetsgrad/ : Hardt skadd, lettere skadd
+
+* Skadetidspunkt
+*** Definisjon
+Skadetidspunkt referer til når i døgnet dvs. klokkeslett, skadehendelsen oppsto eller startet.
+*** Inkluderer
+Alle skadde pasienter hvor ulykke er kontaktårsak til skade.
+*** Ekskluderer
+Alle skadde pasienter med annen enn ulykke som kontaktårsak til skade.
+*** Beregning av indikatorer
+Tallene skal vise antall og andel skadde pasienter på skadetidspunkt fordelt på alvorlighetsgrad:
+- Hardt skadd (AIS +3)
+- Lettere skadd (AIS 1 eller AIS 2)
+*** Teknisk beregning og bearbeiding av data
+- Alle skadde pasienter som har /Ulykkesskade/ som svar til spørsmål om
+  /Kontaktårsak skade/ vil bli inkludert.
+- Hardt skadd er pasienter med /Liten skade (AIS 1)/, /Moderat skade (AIS2)/
+  eller /Alvorlig skade (AIS 3+)/ på spørsmål om /Alvorlighetsgrad skade/.
+- Variable om /Skadetidspunkt/ er ikke missing.
+- Skadetidspunkter vil bli kategorisert i kvartaler dvs. formiddag,
+  ettermiddag, tidlig kveld og sent kveld.
+- Ved små tall skal ...
+*** Inndelinger
+- /Alvorlighetsgrad/ : Hardt skadd, lettere skadd
