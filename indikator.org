@@ -31,25 +31,26 @@ Alle skadde pasienter hvor trafikkulykke er kontaktårsak til skade.
   - =kode N= : Fri natur, utmark, hav, sjø
 
 Følgende trafikant typer er registeret:
-  | type                   | kode |
-  |------------------------+------|
-  | <l>                    | <c>  |
-  | Til fots               |  F   |
-  | Sykkel                 |  S   |
-  | Elektrisk sykkel       |  E   |
-  | Elektrisk sparkesykkel |  G   |
-  | Moped                  |  M   |
-  | Motorsykkel            |  G   |
-  | Personbil, varebil     |  P   |
-  | Lastebil               |  L   |
-  | Buss                   |  B   |
-  | Trikk/tog/bane         |  T   |
-  | ATV "firhjuling"       |  V   |
-  | Snøskuter              |  Q   |
-  | Vannskuter             |  R   |
-  | Ski, snøbrett          |  K   |
-  | Annen fremkomstmiddel  |  A   |
-  | Ukjent fremkomstmiddel |  U   |
+|------------------------+------|
+| type                   | kode |
+|------------------------+------|
+| Til fots               | F    |
+| Sykkel                 | S    |
+| Elektrisk sykkel       | E    |
+| Elektrisk sparkesykkel | G    |
+| Moped                  | M    |
+| Motorsykkel            | G    |
+| Personbil, varebil     | P    |
+| Lastebil               | L    |
+| Buss                   | B    |
+| Trikk/tog/bane         | T    |
+| ATV "firhjuling"       | V    |
+| Snøskuter              | Q    |
+| Vannskuter             | R    |
+| Ski, snøbrett          | K    |
+| Annen fremkomstmiddel  | A    |
+| Ukjent fremkomstmiddel | U    |
+
 - Tall som er færre enn tre blir ikke offentliggjort.
 
 *** Inndelinger
@@ -82,25 +83,26 @@ Alle skadde pasienter hvor trafikkulykke er kontaktårsak til skade.
   - =kode N= : Fri natur, utmark, hav, sjø
 
 Følgende trafikant typer er registeret:
-  | type                   | kode |
-  |------------------------+------|
-  | <l>                    | <c>  |
-  | Til fots               |  F   |
-  | Sykkel                 |  S   |
-  | Elektrisk sykkel       |  E   |
-  | Elektrisk sparkesykkel |  G   |
-  | Moped                  |  M   |
-  | Motorsykkel            |  G   |
-  | Personbil, varebil     |  P   |
-  | Lastebil               |  L   |
-  | Buss                   |  B   |
-  | Trikk/tog/bane         |  T   |
-  | ATV "firhjuling"       |  V   |
-  | Snøskuter              |  Q   |
-  | Vannskuter             |  R   |
-  | Ski, snøbrett          |  K   |
-  | Annen fremkomstmiddel  |  A   |
-  | Ukjent fremkomstmiddel |  U   |
+|------------------------+------|
+| type                   | kode |
+|------------------------+------|
+| Til fots               | F    |
+| Sykkel                 | S    |
+| Elektrisk sykkel       | E    |
+| Elektrisk sparkesykkel | G    |
+| Moped                  | M    |
+| Motorsykkel            | G    |
+| Personbil, varebil     | P    |
+| Lastebil               | L    |
+| Buss                   | B    |
+| Trikk/tog/bane         | T    |
+| ATV "firhjuling"       | V    |
+| Snøskuter              | Q    |
+| Vannskuter             | R    |
+| Ski, snøbrett          | K    |
+| Annen fremkomstmiddel  | A    |
+| Ukjent fremkomstmiddel | U    |
+
 - Tall som er færre enn tre blir ikke offentliggjort.
 
 *** Inndelinger
