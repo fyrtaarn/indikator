@@ -10,7 +10,6 @@ Relevant variabler:
 | Hjemkommune                    | pt_municip_code  |
 | Transportulykke                | acc_transport    |
 |                                | acc_road_traffic |
-|                                |                  |
 | Fremkomstmiddel                | acc_trsp_rd_type |
 | Trafikantrolle                 | acc_trsp_rd_role |
 | Skademekanisme                 | inj_mechanism    |
