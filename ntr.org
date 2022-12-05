@@ -1,0 +1,19 @@
+#+title: Annonym data fra NTR
+
+Relevant variabler:
+
+| Info                           | Variabler        |
+|--------------------------------+------------------|
+| Alder                          |                  |
+| Kjønn                          |                  |
+| Ulykkeskommune                 | acc_municip_code |
+| Hjemkommune                    | pt_municip_code  |
+| Transportulykke                | acc_transport    |
+|                                | acc_road_traffic |
+|                                |                  |
+| Fremkomstmiddel                | acc_trsp_rd_type |
+| Trafikantrolle                 | acc_trsp_rd_role |
+| Skademekanisme                 | inj_mechanism    |
+| Død innen 30 dager etter skade |                  |
+| Alvorlighetsgrad (AIS 3+)      | inj_ais          |
+|--------------------------------+------------------|
