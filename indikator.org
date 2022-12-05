@@ -18,19 +18,18 @@ Alle skadde pasienter hvor trafikkulykke er kontaktårsak til skade.
 - Andre måltall
   1. Antall og andel pasienter fordelt på kjønn.
   2. Antall og andel pasienter fordelt på aldersgrupper.
-  3. Antall og andel pasienter fordelt på trafikant typer.
+  3. Antall og andel pasienter fordelt på fremkomstmiddel.
 
 *** Teknisk beregning og bearbeiding av data
 - Alle skadde pasienter som har /Ulykkesskade/ som svar til spørsmål om
   /Kontaktårsak skade/ vil bli inkludert dvs. =kode 1=.
 - Hardt skadd er pasienter med /Alvorlig skade (AIS 3+)/ på spørsmål om
   /Alvorlighetsgrad skade/ dvs. =kode 3=
-- Trafikant typer registreres via spørsmål om fremkomstmiddel når spørsmål om
-  /Skadested/ ble besvart med:
+- Fremkomstmiddel typer registreres når spørsmål om /Skadested/ ble besvart med:
   - =kode V1= : Vei, gate, fortau, gang/sykkelvei
   - =kode N= : Fri natur, utmark, hav, sjø
 
-Følgende trafikant typer er registeret:
+Følgende fremkomstmidler er registeret:
 |------------------------+------|
 | type                   | kode |
 |------------------------+------|
@@ -71,18 +70,17 @@ Alle skadde pasienter hvor trafikkulykke er kontaktårsak til skade.
 - Andre måltall
   1. Antall og andel pasienter fordelt på kjønn.
   2. Antall og andel pasienter fordelt på aldersgrupper.
-  3. Antall og andel pasienter fordelt på trafikant typer.
+  3. Antall og andel pasienter fordelt på fremkomstmidler.
 *** Teknisk beregning og bearbeiding av data
 - Alle skadde pasienter som har /Ulykkesskade/ som svar til spørsmål om
   /Kontaktårsak skade/ vil bli inkludert dvs. =kode 1=
 - Lettere skadd er pasienter med /Liten skade (AIS 1)/ eller /Moderat skade (AIS
   2)/ på spørsmål om /Alvorlighetsgrad skade/ dvs. =kode 1= og =kode 2=.
-- Trafikant typer registreres via spørsmål om fremkomstmiddel når spørsmål om
-  /Skadested/ ble besvart med:
+- Fremkomstmiddel typer registreres når spørsmål om /Skadested/ ble besvart med:
   - =kode V1= : Vei, gate, fortau, gang/sykkelvei
   - =kode N= : Fri natur, utmark, hav, sjø
 
-Følgende trafikant typer er registeret:
+Følgende fremkomstmidler er registeret:
 |------------------------+------|
 | type                   | kode |
 |------------------------+------|
