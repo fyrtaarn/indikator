@@ -3,7 +3,7 @@
 #+options: toc:1 author:nil \n:t num:2
 #+language: no
 
-Indikatorer er basert på FMDS skjema, dvs. skadde pasienter /(eller skadde hendelser?)/ behandlet i helsevesenet
+Indikatorer er basert på FMDS skjema, dvs. skadde pasienter behandlet i helsevesenet
 
 * Hardt skadd i trafikkulykke
 *** Definisjon
