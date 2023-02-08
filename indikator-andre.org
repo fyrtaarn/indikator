@@ -1,0 +1,49 @@
+#+title: Indikator fra andra land
+#+date:
+#+author:
+
+* New Zealand
+
+Se nettsidene til Statistics New Zealand: http://www.stats.govt.nz/injury
+
+I forbindelse med en forebyggingsstrategi har New Zealand utarbeidet «Injury outcome indicators» som måler utviklingen i skadeforekomst. Indikatorer er laget for følgende:
+
+All injury, assault, intentional self-harm, falls, motor vehicles traffic crashes, drowning, work-related injuries
+
+Separate indikatorer for død og alvorlige ikke-dødelige skader, hvor sistnevnte defineres som «injury to patient admitted to hospital with a probability of death of 6.9 % or more». Dette tallet er basert på DSP (Diagnosis-specific survival probability) – antall pasienter som overlever delt på antall pasienter totalt med diagnosen. Sjekk Injury Severity Score (ICISS) for disse beregningene.
+
+Disse indikatorene er laget for hele befolkingen (4,4 millioner), Mauri befolkningen samt for barn.
+
+Figurer viser antall og rater for hvert år siden 2000 (glidende gjennomsnitt), med baseline for 3/5 år før strategien ble lansert.
+
+I tillegg har University of Otago en statistikkbank med skadedata, med tall for landet, 21 ulike «district health boards» og 74 «territorial local authorities». Antall skader og rater, for ulike typer skader og ulykker. Videre kan man velge kjønn, aldersgruppe, hensikt, utfall (død vs. ikke-død) og periode. National Injury Query System: http://ipru3.otago.ac.nz/niqs/
+
+* England
+
+Ulykkesprofiler for alle «local authorities» (i overkant av 300). http://www.apho.org.uk/default.aspx?QN=INJURY_DEFAULT
+
+Interaktivt atlas samt barometer med over 40 indikatorer. Tall og figurer med sammenligninger (land og region). Utvalgte indikatorer er: ulykkesdødsfall totalt, tapte leveår pga ulykker, sykehusinnleggelser, alvorlige ulykkesskader, transport, fall, lårbrudd, alvorlige hodeskader, brannskader, drukning, forgiftning (totalt og pga ulykke), selvskading og voldsskader. Også noen sosiale indikatorer («extent of deprivation», «risk drinking») samt noen kvalitetsindikatorer (Data Quality Checks), for eksempel skader uten oppgitt årsak.
+
+Veldig fancy, men for ambisiøst for Norge som har langt færre innbyggere men flere lokale enheter. I tillegg er mange indikatorer basert på registreringer av ICD kapittel 20 (Ytre årsaker til skader), som i liten grad fylles ut i Norge. Men i mindre skala er dette noe å strekke seg mot!
+
+* Danmark
+
+Center for ulykkesforskning tar betalt for å lage kommunale ulykkesprofiler, da i form av en rapport. Det finnes to ulike profiler, en «utvidet» profil for de 17 kommunene som inngår i Ulykkesregisteret (a la det gamle Personskaderegisteret) mens andre kommuner kan få en mindre detaljert standardprofil basert på Landpasientregisteret (NPR?) og Dødsårsaksregisteret.
+
+Tema som blir belyst: dødsulykker, drap og selvmord, utvikling i ulykkesforekomst, skadetype/mekanisme, barneulykker, ulykker blant eldre, trafikk, idrett, skole, ulykkesprognoser, produktulykker og arbeidsulykker. Kommunen blir sammenlignet med nabokommuner og landsnittet. http://www.si-folkesundhed.dk/cuf.aspx
+
+* Sverige
+
+Myndigheten for samhallsskydd och beredskap presenterer ulike indikatorer for kommuner. Disse indikatorene blir sammenliknet med fylke (länet), tilsvarende kommuner (forstadskommuner, pendlerkommuner, turistkommuner, storbyer osv.) og riket. http://ida.msb.se/ida2#page=a0078
+
+De mest aktuelle indikatorene er antall ulykker (totalt, i trafikk og brann i bygning) og antall personskader (innlagt på sykehus, minst 1 døgn), sistnevnte totalt, i trafikken og fall. Andre indikatorer omhandler forebygging (fungerende røykvarslere, bilbelte, sykkelhjelm) og ulike sikkerhetsaspekt (uroet for ulykker og innbrudd, responstid ambulanse, risikoanalyse osv.).
+
+* USA
+
+Se nettsidene til HealthyPeople.gov. Her beskrives 10-års planer for helsefremmende mål og tiltak. Under «Injury and violence prevention» omtales ca. 40 målsetninger innen skadeforebygging. Her oppgis en baseline (status) samt et langsiktig mål (ofte en 10 % reduksjon innen 2020). Klikker man på «Data for this objective» kommer man inn i en slags statistikkbank, med rater, konfidensintervaller og standardfeil (feilmargin). Videre kan man bryte ned på alder, kjønn, etnisitet, inntekt, utdanning, geografi (by vs. land) og mye annet (bl. a. seksuell orientering og kjønnsidentitet!) – der mulig.
+
+Blant indikatorene her kan vi nevne:
+
+Skadedødsfall, sykehusinnleggelser, mottak på akuttavdelinger, ryggmargsskader, hjerneskader, forgiftning, trafikk, fall, kvelning, drukning, voldsskader, seksuell vold og selvskading.
+
+Omtaler også andre «typer» forebyggingsindikatorer, blant annet andel barnedødsfall som blir gransket av et «child fatality review team», andel skader med registrert årsak, andel av befolkningen med tilgang til traumebehandling, økt bilbruk, andel stater med påbud om bruk av sykkelhjelm, andel ungdom som tar med våpen på skolen (!) osv.
