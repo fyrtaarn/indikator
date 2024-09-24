@@ -27,7 +27,7 @@ Alle skadde pasienter hvor trafikkulykke er kontaktårsak til skade.
   /Alvorlighetsgrad skade/ dvs. =kode 3=
 - Fremkomstmiddel typer registreres når spørsmål om /Skadested/ ble besvart med:
   - =kode V1= : Vei, gate, fortau, gang/sykkelvei
-  - =kode N= : Fri natur, utmark, hav, sjø
+  - +=kode N= : Fri natur, utmark, hav, sjø+ (kommentar etter arbeidsgruppemøte 19.09.2024)
 
 Følgende fremkomstmidler er registeret:
 |------------------------+------|
@@ -78,7 +78,7 @@ Alle skadde pasienter hvor trafikkulykke er kontaktårsak til skade.
   2)/ på spørsmål om /Alvorlighetsgrad skade/ dvs. =kode 1= og =kode 2=.
 - Fremkomstmiddel typer registreres når spørsmål om /Skadested/ ble besvart med:
   - =kode V1= : Vei, gate, fortau, gang/sykkelvei
-  - =kode N= : Fri natur, utmark, hav, sjø
+  - +=kode N= : Fri natur, utmark, hav, sjø+ (kommentar etter arbeidsgruppemøte 19.09.2024)
 
 Følgende fremkomstmidler er registeret:
 |------------------------+------|
