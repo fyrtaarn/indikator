@@ -1,0 +1,47 @@
+---
+title: "FMDS første tertial 2024"
+subtitle: "`r format(Sys.Date(), '%d %B %Y')`"
+lang: no-language.yml 
+format:
+  html:
+    toc: true
+    toc-title: Innhold
+    code-fold: true
+    code-summary: "Vis kode"
+    self-contained: true
+  pdf:
+    toc: false
+---
+
+
+```{r packages}
+#| output: false
+#| echo: false
+
+pkgs <- c("data.table", "fst", "lubridate", "ggplot2", "plotly", "S7", "stringi", "knitr", "gt")
+if(!require(pak)) install.packages("pacman")
+pacman::p_load(char = pkgs)
+```
+
+```{r setup, file="tertial202401/setup.R"}
+#| output: false 
+#| echo: false 
+#| cache: true
+
+## Filter Fyrtårn institutions with insFmd == 1 when using object fmddt
+## Object fmd is FMDS data for Fyrtårn institutions only. 
+
+```
+
+```{r background}
+#| output: false
+#| echo: false
+
+pop <- fmd[!is.na(lopenr) & !duplicated(lopenr), .N]
+popna <- fmd[is.na(lopenr), .N]
+popdub <- fmd[!is.na(lopenr) & duplicated(lopenr), .N]
+```
+
+Denne rapporten omfatter data fra Felles minimum datasett (FMDS), hentet fra Norsk pasientregister (NPR) for perioden januar til april 2024. Totalt er `r format(pop, big.mark = " ")` pasienter inkludert i analysen, hvorav `r format(popdub, big.mark = " ")` pasienter hadde registrert mer enn én skadehendelse. Pasienter med ugyldig personnummer er ekskludert fra analysen (N = `r format(popna, big.mark = " ")`).
+
+# Skadegrad
