@@ -30,6 +30,7 @@ pacman::p_load(char = pkgs)
 
 ## Filter Fyrtårn institutions with insFmd == 1 when using object fmddt
 ## Object fmd is FMDS data for Fyrtårn institutions only. 
+## Object somdt for activity data jan-april 2024
 
 ```
 
@@ -39,9 +40,11 @@ pacman::p_load(char = pkgs)
 
 pop <- fmd[!is.na(lopenr) & !duplicated(lopenr), .N]
 popna <- fmd[is.na(lopenr), .N]
-popdub <- fmd[!is.na(lopenr) & duplicated(lopenr), .N]
+popdub <- fmd[!is.na(lopenr) & duplicated(lopenr), ][!duplicated(lopenr), .N]
 ```
 
 Denne rapporten omfatter data fra Felles minimum datasett (FMDS), hentet fra Norsk pasientregister (NPR) for perioden januar til april 2024. Totalt er `r format(pop, big.mark = " ")` pasienter inkludert i analysen, hvorav `r format(popdub, big.mark = " ")` pasienter hadde registrert mer enn én skadehendelse. Pasienter med ugyldig personnummer er ekskludert fra analysen (N = `r format(popna, big.mark = " ")`).
 
+
 # Skadegrad
+
