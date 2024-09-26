@@ -1,4 +1,6 @@
 en:
   crossref-fig-title: "Figure"
-norwegian:
+  crossref-tbl-title: "Table"
+no:
   crossref-fig-title: "Figur"
+  crossref-tbl-title: "Tabell"
