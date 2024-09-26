@@ -194,11 +194,10 @@ involvert i trafikkulykker (N = 1 047).
 \section{Alvorlighetsgrad}\label{alvorlighetsgrad}
 
 Alvorlighetsgrad av skade er beskrevet i registreringsveilederen for
-personskader (Felles minimum datasett - FMDS), som gir en overordnet
-vurdering av hvor alvorlig pasienten er skadet, klassifisert for
-enkelhets skyld ut fra trussel mot livets opprettholdelse. Inndelingen
-er basert på en internasjonal klassifikasjon \emph{Abbreviated Injury
-Scale (AIS)}.
+personskader (FMDS), som gir en overordnet vurdering av hvor alvorlig
+pasienten er skadet, klassifisert for enkelhets skyld ut fra trussel mot
+livets opprettholdelse. Inndelingen er basert på en internasjonal
+klassifikasjon \emph{Abbreviated Injury Scale (AIS)}.
 
 Fordelingen av alvorlighetsgrad for ulykkeskade pasienter vises i
 Tabell~\ref{tbl-alvorlig} nedenfor.
@@ -270,22 +269,102 @@ Total & 64 & 100.0 \\
 \end{longtable*}
 \endgroup
 
-\begin{verbatim}
-    fremkomstmiddel     N prosent            beskrivelse
-             <char> <int>   <num>                 <char>
- 1:           Total    64   100.0                       
- 2:               P    19    29.7      Personbil/Varebil
- 3:               S    15    23.4                 Sykkel
- 4:               F    10    15.6               Til fots
- 5:               G     4     6.2 Elektrisk sparkesykkel
- 6:               O     4     6.2            Motorsykkel
- 7:               U     4     6.2                 Ukjent
- 8:                     3     4.7                   <NA>
- 9:               V     2     3.1         ATV/Firhjuling
-10:               B     1     1.6                   Buss
-11:               L     1     1.6               Lastebil
-12:               T     1     1.6         Trikk/tog/bane
-\end{verbatim}
+\begingroup
+\fontsize{12.0pt}{14.4pt}\selectfont
+\begin{longtable*}{lrr}
+\caption*{
+{\large Fremkomsmiddel}
+} \\ 
+\toprule
+beskrivelse & N & prosent \\ 
+\midrule\addlinespace[2.5pt]
+Personbil/Varebil & 19 & 29.7 \\ 
+Sykkel & 15 & 23.4 \\ 
+Til fots & 10 & 15.6 \\ 
+Elektrisk sparkesykkel & 4 & 6.2 \\ 
+Motorsykkel & 4 & 6.2 \\ 
+Ukjent & 4 & 6.2 \\ 
+NA & 3 & 4.7 \\ 
+ATV/Firhjuling & 2 & 3.1 \\ 
+Buss & 1 & 1.6 \\ 
+Lastebil & 1 & 1.6 \\ 
+Trikk/tog/bane & 1 & 1.6 \\ 
+Total & 64 & 100.0 \\ 
+\bottomrule
+\end{longtable*}
+\endgroup
+
+\subsection{Lettere skadd AIS 1 og 2}\label{lettere-skadd-ais-1-og-2}
+
+Fordelingen av lettere skadde pasienter med AIS 1 eller 2 (N = 960)
+etter kjønn, aldersgrupper og fremkomstmiddel er som følger:
+
+\begingroup
+\fontsize{12.0pt}{14.4pt}\selectfont
+\begin{longtable*}{lrr}
+\caption*{
+{\large Kjønn fordeling}
+} \\ 
+\toprule
+beskrivelse & N & prosent \\ 
+\midrule\addlinespace[2.5pt]
+Mann & 565 & 58.9 \\ 
+Kvinne & 395 & 41.1 \\ 
+Total & 960 & 100.0 \\ 
+\bottomrule
+\end{longtable*}
+\endgroup
+
+\begingroup
+\fontsize{12.0pt}{14.4pt}\selectfont
+\begin{longtable*}{lrr}
+\caption*{
+{\large Aldersgrupper}
+} \\ 
+\toprule
+Alder & N & prosent \\ 
+\midrule\addlinespace[2.5pt]
+0-14 & 92 & 9.6 \\ 
+15-24 & 162 & 16.9 \\ 
+25-44 & 344 & 35.8 \\ 
+45-64 & 253 & 26.4 \\ 
+65-79 & 82 & 8.5 \\ 
+80+ & 27 & 2.8 \\ 
+Total & 960 & 100.0 \\ 
+\bottomrule
+\end{longtable*}
+\endgroup
+
+\begingroup
+\fontsize{12.0pt}{14.4pt}\selectfont
+\begin{longtable*}{lrr}
+\caption*{
+{\large Fremkomsmiddel}
+} \\ 
+\toprule
+beskrivelse & N & prosent \\ 
+\midrule\addlinespace[2.5pt]
+Personbil/Varebil & 294 & 30.6 \\ 
+Sykkel & 191 & 19.9 \\ 
+Til fots & 147 & 15.3 \\ 
+Ukjent & 69 & 7.2 \\ 
+Elektrisk sparkesykkel & 61 & 6.4 \\ 
+NA & 45 & 4.7 \\ 
+Motorsykkel & 41 & 4.3 \\ 
+Buss & 32 & 3.3 \\ 
+Moped & 22 & 2.3 \\ 
+El-sykkel & 21 & 2.2 \\ 
+Annet spesifisert & 16 & 1.7 \\ 
+Trikk/tog/bane & 6 & 0.6 \\ 
+Sparkesykkel & 4 & 0.4 \\ 
+Lastebil & 4 & 0.4 \\ 
+Ski/Snøbrett mv. & 3 & 0.3 \\ 
+Snøskuter & 3 & 0.3 \\ 
+ATV/Firhjuling & 1 & 0.1 \\ 
+Total & 960 & 100.0 \\ 
+\bottomrule
+\end{longtable*}
+\endgroup
 
 
 

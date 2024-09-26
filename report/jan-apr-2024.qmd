@@ -58,7 +58,7 @@ Denne rapporten omfatter data fra Felles minimum datasett (FMDS), hentet fra Nor
 
 # Alvorlighetsgrad
 
-Alvorlighetsgrad av skade er beskrevet i registreringsveilederen for personskader (Felles minimum datasett - FMDS), som gir en overordnet vurdering av hvor alvorlig pasienten er skadet, klassifisert for enkelhets skyld ut fra trussel mot livets opprettholdelse. Inndelingen er basert på en internasjonal klassifikasjon *Abbreviated Injury Scale (AIS)*.
+Alvorlighetsgrad av skade er beskrevet i registreringsveilederen for personskader (FMDS), som gir en overordnet vurdering av hvor alvorlig pasienten er skadet, klassifisert for enkelhets skyld ut fra trussel mot livets opprettholdelse. Inndelingen er basert på en internasjonal klassifikasjon *Abbreviated Injury Scale (AIS)*.
 
 Fordelingen av alvorlighetsgrad for ulykkeskade pasienter vises i @tbl-alvorlig nedenfor.
 
@@ -69,6 +69,7 @@ Fordelingen av alvorlighetsgrad for ulykkeskade pasienter vises i @tbl-alvorlig 
 
 grad <- show_pro(acc, "alvorlighetsgrad", kb, value = FALSE)
 n3 <- grad[beskrivelse %like% "3+", c(N)]
+n12 <- grad[beskrivelse %like% "Lite" | beskrivelse %like% "Moderat", sum(N, na.rm = T)]
 
 gt(grad) |>
   tab_header(title = "Alvorlighetsgrad skade")
@@ -113,3 +114,40 @@ gt(frm3) |>
 ```
 
 ## Lettere skadd AIS 1 og 2
+
+Fordelingen av lettere skadde pasienter med AIS 1 eller 2 (N = `r n12`) etter kjønn, aldersgrupper og fremkomstmiddel er som følger: 
+
+
+```{r gender2}
+#| echo: false
+
+dt12 <- acc[alvorlighetsgrad %in% 1:2]
+
+sex12 <- show_pro(dt12, "kjonn", kb, value = F)
+gt(sex12) |>
+  tab_header(title = "Kjønn fordeling")
+
+```
+
+
+```{r ais2}
+#| echo: false
+
+dt12[fodtAar_FMDS > 0, ageFMDS := lubridate::year(skadeDato) - fodtAar]
+age12 <- do_agegroup(dt12, "ageFMDS", c(0, 15, 25, 45, 65, 80, Inf), "agegp")
+
+ais12 <- show_pro(age12, "agegp")
+data.table::setnames(ais12, "agegp", "Alder")
+
+gt(ais12) |>
+  tab_header("Aldersgrupper")
+```
+
+```{r fremkomst2}
+#| echo: false
+
+frm12 <- show_pro(dt12, "fremkomstmiddel", kb, sort = "N", value = FALSE)
+
+gt(frm12) |>
+  tab_header("Fremkomsmiddel")
+```
