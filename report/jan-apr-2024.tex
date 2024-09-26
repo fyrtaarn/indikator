@@ -92,7 +92,14 @@
 \def\fps@figure{htbp}
 \makeatother
 
-\KOMAoption{captions}{tableheading}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{longtable}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{anyfontsize}
+\usepackage{multirow}
+\KOMAoption{captions}{tablesignature}
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
@@ -112,14 +119,14 @@
   \newcommand\listtablename{List of Tables}
 \fi
 \ifdefined\figurename
-  \renewcommand*\figurename{Figure}
+  \renewcommand*\figurename{Figur}
 \else
-  \newcommand\figurename{Figure}
+  \newcommand\figurename{Figur}
 \fi
 \ifdefined\tablename
-  \renewcommand*\tablename{Table}
+  \renewcommand*\tablename{Tabell}
 \else
-  \newcommand\tablename{Table}
+  \newcommand\tablename{Tabell}
 \fi
 }
 \@ifpackageloaded{float}{}{\usepackage{float}}
@@ -153,7 +160,7 @@
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
   pdftitle={FMDS første tertial 2024},
-  pdflang={no-language.yml},
+  pdflang={no},
   colorlinks=true,
   linkcolor={blue},
   filecolor={Maroon},
@@ -169,7 +176,7 @@
   \apptocmd{\@title}{\par {\large #1 \par}}{}{}
 }
 \makeatother
-\subtitle{25 september 2024}
+\subtitle{26 september 2024}
 \author{}
 \date{}
 
@@ -179,11 +186,106 @@
 
 Denne rapporten omfatter data fra Felles minimum datasett (FMDS), hentet
 fra Norsk pasientregister (NPR) for perioden januar til april 2024.
-Totalt er 43 247 pasienter inkludert i analysen, hvorav 1 259 pasienter
-hadde registrert mer enn én skadehendelse. Pasienter med ugyldig
-personnummer er ekskludert fra analysen (N = 736).
+Totalt er 43 247 pasienter ble registeret, hvorav 1 259 pasienter hadde
+mer enn én skadehendelse. Pasienter med ugyldig personnummer er
+ekskludert (N = 736). Videre analyser gjelder bare for pasienter
+involvert i trafikkulykker (N = 1 047).
 
-\section{Skadegrad}\label{skadegrad}
+\section{Alvorlighetsgrad}\label{alvorlighetsgrad}
+
+Alvorlighetsgrad av skade er beskrevet i registreringsveilederen for
+personskader (Felles minimum datasett - FMDS), som gir en overordnet
+vurdering av hvor alvorlig pasienten er skadet, klassifisert for
+enkelhets skyld ut fra trussel mot livets opprettholdelse. Inndelingen
+er basert på en internasjonal klassifikasjon \emph{Abbreviated Injury
+Scale (AIS)}.
+
+Fordelingen av alvorlighetsgrad for ulykkeskade pasienter vises i
+Tabell~\ref{tbl-alvorlig} nedenfor.
+
+\begingroup
+\fontsize{12.0pt}{14.4pt}\selectfont
+
+\begin{longtable}{lrr}
+
+
+\caption*{
+{\large Alvorlighetsgrad skade}
+} \\ 
+\toprule
+beskrivelse & N & prosent \\ 
+\midrule\addlinespace[2.5pt]
+Liten skade (AIS 1) & 693 & 66.2 \\ 
+Moderat skade (AIS 2) & 267 & 25.5 \\ 
+Alvorlig skade (AIS 3+) & 64 & 6.1 \\ 
+Ukjent alvorlighetsgrad & 23 & 2.2 \\ 
+Total & 1047 & 100.0 \\ 
+\bottomrule
+
+\caption{\label{tbl-alvorlig}Alvorlighetsgrad}
+
+\tabularnewline
+\end{longtable}
+
+\endgroup
+
+\subsection{Hardt skadd AIS 3+}\label{hardt-skadd-ais-3}
+
+Fordelingen av hardt skadde pasienter med AIS 3+ (N = 64) etter kjønn,
+aldersgrupper og fremkomstmiddel er som følger:
+
+\begingroup
+\fontsize{12.0pt}{14.4pt}\selectfont
+\begin{longtable*}{lrr}
+\caption*{
+{\large Kjønn fordeling}
+} \\ 
+\toprule
+beskrivelse & N & prosent \\ 
+\midrule\addlinespace[2.5pt]
+Mann & 38 & 59.4 \\ 
+Kvinne & 26 & 40.6 \\ 
+Total & 64 & 100.0 \\ 
+\bottomrule
+\end{longtable*}
+\endgroup
+
+\begingroup
+\fontsize{12.0pt}{14.4pt}\selectfont
+\begin{longtable*}{lrr}
+\caption*{
+{\large Aldersgrupper}
+} \\ 
+\toprule
+Alder & N & prosent \\ 
+\midrule\addlinespace[2.5pt]
+0-14 & 1 & 1.6 \\ 
+15-24 & 10 & 15.6 \\ 
+25-44 & 13 & 20.3 \\ 
+45-64 & 26 & 40.6 \\ 
+65-79 & 10 & 15.6 \\ 
+80+ & 4 & 6.2 \\ 
+Total & 64 & 100.0 \\ 
+\bottomrule
+\end{longtable*}
+\endgroup
+
+\begin{verbatim}
+    fremkomstmiddel     N prosent            beskrivelse
+             <char> <int>   <num>                 <char>
+ 1:           Total    64   100.0                       
+ 2:               P    19    29.7      Personbil/Varebil
+ 3:               S    15    23.4                 Sykkel
+ 4:               F    10    15.6               Til fots
+ 5:               G     4     6.2 Elektrisk sparkesykkel
+ 6:               O     4     6.2            Motorsykkel
+ 7:               U     4     6.2                 Ukjent
+ 8:                     3     4.7                   <NA>
+ 9:               V     2     3.1         ATV/Firhjuling
+10:               B     1     1.6                   Buss
+11:               L     1     1.6               Lastebil
+12:               T     1     1.6         Trikk/tog/bane
+\end{verbatim}
 
 
 

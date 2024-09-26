@@ -1,7 +1,9 @@
 ---
 title: "FMDS første tertial 2024"
 subtitle: "`r format(Sys.Date(), '%d %B %Y')`"
-lang: no-language.yml 
+lang: no 
+language: no-language.yml 
+tbl-cap-location: bottom
 format:
   html:
     toc: true
@@ -21,6 +23,11 @@ format:
 pkgs <- c("data.table", "fst", "lubridate", "ggplot2", "plotly", "S7", "stringi", "knitr", "gt")
 if(!require(pak)) install.packages("pacman")
 pacman::p_load(char = pkgs)
+
+root <- "~/Git-fhi/analysis/npr"
+fx <- list.files(file.path(root, "functions"))
+for (i in fx)
+  source(file.path(root, "functions", i))
 ```
 
 ```{r setup, file="tertial202401/setup.R"}
@@ -29,7 +36,8 @@ pacman::p_load(char = pkgs)
 #| cache: true
 
 ## Filter Fyrtårn institutions with insFmd == 1 when using object fmddt
-## Object fmd is FMDS data for Fyrtårn institutions only. 
+## Object fmd is FMDS data for Fyrtårn institutions only with missing lopenr
+## Object fdd is FMDS data for Fyrtårn institutions only without missing lopenr
 ## Object somdt for activity data jan-april 2024
 
 ```
@@ -41,10 +49,67 @@ pacman::p_load(char = pkgs)
 pop <- fmd[!is.na(lopenr) & !duplicated(lopenr), .N]
 popna <- fmd[is.na(lopenr), .N]
 popdub <- fmd[!is.na(lopenr) & duplicated(lopenr), ][!duplicated(lopenr), .N]
+
+# Filter for ulykkeskader pasienter
+acc <- fdd[kontaktarsakSkade == 1 & skadeSted == "V1"]
 ```
 
-Denne rapporten omfatter data fra Felles minimum datasett (FMDS), hentet fra Norsk pasientregister (NPR) for perioden januar til april 2024. Totalt er `r format(pop, big.mark = " ")` pasienter inkludert i analysen, hvorav `r format(popdub, big.mark = " ")` pasienter hadde registrert mer enn én skadehendelse. Pasienter med ugyldig personnummer er ekskludert fra analysen (N = `r format(popna, big.mark = " ")`).
+Denne rapporten omfatter data fra Felles minimum datasett (FMDS), hentet fra Norsk pasientregister (NPR) for perioden januar til april 2024. Totalt er `r format(pop, big.mark = " ")` pasienter ble registeret, hvorav `r format(popdub, big.mark = " ")` pasienter hadde mer enn én skadehendelse. Pasienter med ugyldig personnummer er ekskludert (N = `r format(popna, big.mark = " ")`). Videre analyser gjelder bare for  pasienter involvert i trafikkulykker (N = `r format(dim(acc)[1], big.mark = " ")`).
+
+# Alvorlighetsgrad
+
+Alvorlighetsgrad av skade er beskrevet i registreringsveilederen for personskader (Felles minimum datasett - FMDS), som gir en overordnet vurdering av hvor alvorlig pasienten er skadet, klassifisert for enkelhets skyld ut fra trussel mot livets opprettholdelse. Inndelingen er basert på en internasjonal klassifikasjon *Abbreviated Injury Scale (AIS)*.
+
+Fordelingen av alvorlighetsgrad for ulykkeskade pasienter vises i @tbl-alvorlig nedenfor.
+
+```{r skadegrad}
+#| echo: false
+#| label: tbl-alvorlig
+#| tbl-cap: "Alvorlighetsgrad"
+
+grad <- show_pro(acc, "alvorlighetsgrad", kb, value = FALSE)
+n3 <- grad[beskrivelse %like% "3+", c(N)]
+
+gt(grad) |>
+  tab_header(title = "Alvorlighetsgrad skade")
+```
+
+## Hardt skadd AIS 3+
+
+Fordelingen av hardt skadde pasienter med AIS 3+ (N = `r n3`) etter kjønn, aldersgrupper og fremkomstmiddel er som følger: 
+
+```{r gender}
+#| echo: false
+
+dt3 <- acc[alvorlighetsgrad == 3]
+
+sex3 <- show_pro(dt3, "kjonn", kb, value = F)
+gt(sex3) |>
+  tab_header(title = "Kjønn fordeling")
+
+```
 
 
-# Skadegrad
+```{r ais3}
+#| echo: false
 
+dt3[fodtAar_FMDS > 0, ageFMDS := lubridate::year(skadeDato) - fodtAar]
+age3 <- do_agegroup(dt3, "ageFMDS", c(0, 15, 25, 45, 65, 80, Inf), "agegp")
+
+ais3 <- show_pro(age3, "agegp")
+data.table::setnames(ais3, "agegp", "Alder")
+
+gt(ais3) |>
+  tab_header("Aldersgrupper")
+```
+
+```{r fremkomst}
+#| echo: false
+
+frm3 <- show_pro(dt3, "fremkomstmiddel", kb, sort = "N", value = FALSE)
+
+gt(frm3) |>
+  tab_header("Fremkomsmiddel")
+```
+
+## Lettere skadd AIS 1 og 2

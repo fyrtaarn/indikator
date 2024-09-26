@@ -3,11 +3,6 @@
 
 fdrive <- "f:/Forskningsprosjekter/PDB 3327 - Skader i Norge analy_"
 
-root <- "~/Git-fhi/analysis/npr"
-fx <- list.files(file.path(root, "functions"))
-for (i in fx)
-  source(file.path(root, "functions", i))
-
 # kodebok
 kb <- fread(file.path(fdrive, "Data/Kodebok_Skader_i_Norge.csv"), encoding = "Latin-1")
 
@@ -34,3 +29,4 @@ setkey(fmddt, lopenr, skadeDato, skadeTid)
 fmddt[Ft_dummy_Kommunal == 1 | Ft_dummy_Spesialist == 1, insFmd := 1]
 
 fmd <- fmddt[insFmd == 1]
+fdd <- fmddt[!is.na(lopenr) & insFmd == 1]
