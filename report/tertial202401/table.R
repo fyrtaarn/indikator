@@ -69,7 +69,7 @@ tblAis |>
   gt(groupname_col = 'item') |>
   cols_label(.list = coln) |>
   tab_spanner(
-    label = md('**AIS 1 & 3**'),
+    label = md('**AIS 1 & 2**'),
     columns = contains("AIS 1 & 2")) |>
   tab_spanner(
     label = md('**AIS 3+**'),

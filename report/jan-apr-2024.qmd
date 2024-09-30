@@ -1,5 +1,5 @@
 ---
-title: "FMDS første tertial 2024"
+title: "Trafikkulykker statistikk for første tertial 2024"
 subtitle: "`r format(Sys.Date(), '%d %B %Y')`"
 lang: no 
 language: no-language.yml 
@@ -12,6 +12,8 @@ format:
     code-summary: "Vis kode"
     self-contained: true
   pdf:
+    toc: false
+  docx:
     toc: false
 ---
 
@@ -54,7 +56,10 @@ popdub <- fmd[!is.na(lopenr) & duplicated(lopenr), ][!duplicated(lopenr), .N]
 acc <- fdd[kontaktarsakSkade == 1 & skadeSted == "V1"]
 ```
 
-Denne rapporten omfatter data fra Felles minimum datasett (FMDS), hentet fra Norsk pasientregister (NPR) for perioden januar til april 2024. Totalt er `r format(pop, big.mark = " ")` pasienter registert, hvorav `r format(popdub, big.mark = " ")` pasienter hadde mer enn én skadehendelse. Pasienter med ugyldig personnummer er ekskludert (N = `r format(popna, big.mark = " ")`). Videre analyser gjelder bare for  pasienter involvert i trafikkulykker (N = `r format(dim(acc)[1], big.mark = " ")`).
+Denne rapporten omfatter data fra Felles minimum datasett (FMDS) i Norsk pasientregister (NPR), hentet fra deltakende helse institusjoner i Fyrtårnprosjektet for perioden januar til april 2024. Totalt er `r format(pop, big.mark = " ")` pasienter registert, hvorav `r format(popdub, big.mark = " ")` pasienter hadde mer enn én skadehendelse. Pasienter med ugyldig personnummer er ekskludert (N = `r format(popna, big.mark = " ")`). Videre analyser gjelder bare for  pasienter involvert i trafikkulykker (N = `r format(dim(acc)[1], big.mark = " ")`).
+
+Det er en vis usikkerhet med tallene som blir presentert her fordi noen pasienter med samme skadde kan bli telt flere ganger dersom de er registrert ved ulike sykehus eller legevakter. Vi jobber fortsatt med å utvikle metoder for å minimere slike tilfeller. 
+ 
 
 # Alvorlighetsgrad
 
@@ -72,83 +77,41 @@ n3 <- grad[beskrivelse %like% "3+", c(N)]
 n12 <- grad[beskrivelse %like% "Lite" | beskrivelse %like% "Moderat", sum(N, na.rm = T)]
 
 ## data.table::setnames(grad, new=c("", "N", "Prosent"))
+data.table::setnames(grad, "prosent", "Prosent")
 gt(grad) |>
-  cols_label(beskrivelse = " ")
+  cols_label(beskrivelse = " ") |>
+  opt_stylize(style = 6, color = 'gray')
 ```
 
-## Hardt skadd AIS 3+
+Fordelingen av lettere skadde pasienter med AIS 1 eller 2 (N = `r n12`) og hardt skadde pasienter med AIS 3+ (N = `r n3`) etter kjønn, aldersgrupper og fremkomstmiddel vises i @tbl-ais nedenfor. 
 
-Fordelingen av hardt skadde pasienter med AIS 3+ (N = `r n3`) etter kjønn, aldersgrupper og fremkomstmiddel er som følger: 
+```{r ais, file="tertial202401/table.R"}
+#| echo: false
+#| label: tbl-ais
+#| tbl-cap: "Trafikkulykker"
 
-```{r gender}
+```
+
+```{r tall}
 #| echo: false
 
-dt3 <- acc[alvorlighetsgrad == 3]
+manN3 <- tblAis[beskrivelse == "Mann", "N_AIS 3+"][[1]]
+manpr3 <- tblAis[beskrivelse == "Mann", "prosent_AIS 3+"][[1]]
+manN2 <- tblAis[beskrivelse == "Mann", "N_AIS 1 & 2"][[1]]
+manpr2 <- tblAis[beskrivelse == "Mann", "prosent_AIS 1 & 2"][[1]]
 
-sex3 <- show_pro(dt3, "kjonn", kb, value = F)
-gt(sex3) |>
-  tab_header(title = "Kjønn fordeling")
+agepr3 <- tblAis[beskrivelse == "45-64", "N_AIS 3+"][[1]] 
+agepr2 <- tblAis[beskrivelse == "", "prosent_AIS 1 & 2"][[1]]
 
+colPros3 <- grep("prosent.*3+", names(tblAis), value = T)
+pros3 <- tblAis[item == "Alder", max(.SD), .SDcols = colPros3]
+prosAge3 <- tblAis[colPros3 == pros3 & item == "Alder", .(beskrivelse), env = list(colPros3 = colPros3, pros3 = pros3)][[1]]
+
+colPros2 <- grep("prosent.*1", names(tblAis), value = T)
+pros2 <- tblAis[item == "Alder", max(.SD), .SDcols = colPros2]
+prosAge2 <- tblAis[colPros2 == pros2 & item == "Alder", .(beskrivelse), env = list(colPros2 = colPros2, pros2 = pros2)][[1]]
 ```
 
 
-```{r ais3}
-#| echo: false
+@tbl-ais viser at flere menn enn kvinner er skadet i trafikkulykker, både når det gjelder alvorlige (`r manpr3`%) og mindre alvorlige skader (`r manpr2`%). Når det gjelder aldersfordeling, ser vi at antallet hardt skadde er høyest blant personer i aldersgruppen `r prosAge3` år (`r pros3`%), mens de med lettere skader er mest representert i aldersgruppen `r prosAge2` år (`r pros2`%). Fordelingen av fremkomstmidler ved trafikkulykker er relativt lik for både hardt og lettere skadde.
 
-dt3[fodtAar_FMDS > 0, ageFMDS := lubridate::year(skadeDato) - fodtAar]
-age3 <- do_agegroup(dt3, "ageFMDS", c(0, 17, 25, 45, 65, 80, Inf), "agegp")
-
-ais3 <- show_pro(age3, "agegp")
-data.table::setnames(ais3, "agegp", "Alder")
-
-gt(ais3) |>
-  tab_header("Aldersgrupper")
-```
-
-```{r fremkomst}
-#| echo: false
-
-frm3 <- show_pro(dt3, "fremkomstmiddel", kb, sort = "N", value = FALSE)
-
-gt(frm3) |>
-  tab_header("Fremkomsmiddel")
-```
-
-## Lettere skadd AIS 1 og 2
-
-Fordelingen av lettere skadde pasienter med AIS 1 eller 2 (N = `r n12`) etter kjønn, aldersgrupper og fremkomstmiddel er som følger: 
-
-
-```{r gender2}
-#| echo: false
-
-dt12 <- acc[alvorlighetsgrad %in% 1:2]
-
-sex12 <- show_pro(dt12, "kjonn", kb, value = F)
-gt(sex12) |>
-  tab_header(title = "Kjønn fordeling")
-
-```
-
-
-```{r ais2}
-#| echo: false
-
-dt12[fodtAar_FMDS > 0, ageFMDS := lubridate::year(skadeDato) - fodtAar]
-age12 <- do_agegroup(dt12, "ageFMDS", c(0, 15, 25, 45, 65, 80, Inf), "agegp")
-
-ais12 <- show_pro(age12, "agegp")
-data.table::setnames(ais12, "agegp", "Alder")
-
-gt(ais12) |>
-  tab_header("Aldersgrupper")
-```
-
-```{r fremkomst2}
-#| echo: false
-
-frm12 <- show_pro(dt12, "fremkomstmiddel", kb, sort = "N", value = FALSE)
-
-gt(frm12) |>
-  tab_header("Fremkomsmiddel")
-```

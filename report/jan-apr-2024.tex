@@ -99,7 +99,7 @@
 \usepackage{array}
 \usepackage{anyfontsize}
 \usepackage{multirow}
-\KOMAoption{captions}{tablesignature}
+\KOMAoption{captions}{tableheading}
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
@@ -159,7 +159,7 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
-  pdftitle={FMDS første tertial 2024},
+  pdftitle={Trafikkulykker statistikk for første tertial 2024},
   pdflang={no},
   colorlinks=true,
   linkcolor={blue},
@@ -169,7 +169,7 @@
   pdfcreator={LaTeX via pandoc}}
 
 
-\title{FMDS første tertial 2024}
+\title{Trafikkulykker statistikk for første tertial 2024}
 \usepackage{etoolbox}
 \makeatletter
 \providecommand{\subtitle}[1]{% add subtitle to \maketitle
@@ -184,12 +184,18 @@
 \maketitle
 
 
-Denne rapporten omfatter data fra Felles minimum datasett (FMDS), hentet
-fra Norsk pasientregister (NPR) for perioden januar til april 2024.
-Totalt er 43 247 pasienter ble registeret, hvorav 1 259 pasienter hadde
-mer enn én skadehendelse. Pasienter med ugyldig personnummer er
-ekskludert (N = 736). Videre analyser gjelder bare for pasienter
-involvert i trafikkulykker (N = 1 047).
+Denne rapporten omfatter data fra Felles minimum datasett (FMDS) i Norsk
+pasientregister (NPR), hentet fra deltakende helse institusjoner i
+Fyrtårnprosjektet for perioden januar til april 2024. Totalt er 43 247
+pasienter registert, hvorav 1 259 pasienter hadde mer enn én
+skadehendelse. Pasienter med ugyldig personnummer er ekskludert (N =
+736). Videre analyser gjelder bare for pasienter involvert i
+trafikkulykker (N = 1 047).
+
+Det er en vis usikkerhet med tallene som blir presentert her fordi noen
+pasienter med samme skadde kan bli telt flere ganger dersom de er
+registrert ved ulike sykehus eller legevakter. Vi jobber fortsatt med å
+utvikle metoder for å minimere slike tilfeller.
 
 \section{Alvorlighetsgrad}\label{alvorlighetsgrad}
 
@@ -207,12 +213,12 @@ Tabell~\ref{tbl-alvorlig} nedenfor.
 
 \begin{longtable}{lrr}
 
+\caption{\label{tbl-alvorlig}Alvorlighetsgrad skade}
 
-\caption*{
-{\large Alvorlighetsgrad skade}
-} \\ 
+\tabularnewline
+
 \toprule
-beskrivelse & N & prosent \\ 
+  & N & Prosent \\ 
 \midrule\addlinespace[2.5pt]
 Liten skade (AIS 1) & 693 & 66.2 \\ 
 Moderat skade (AIS 2) & 267 & 25.5 \\ 
@@ -221,150 +227,73 @@ Ukjent alvorlighetsgrad & 23 & 2.2 \\
 Total & 1047 & 100.0 \\ 
 \bottomrule
 
-\caption{\label{tbl-alvorlig}Alvorlighetsgrad}
-
-\tabularnewline
 \end{longtable}
 
 \endgroup
 
-\subsection{Hardt skadd AIS 3+}\label{hardt-skadd-ais-3}
-
-Fordelingen av hardt skadde pasienter med AIS 3+ (N = 64) etter kjønn,
-aldersgrupper og fremkomstmiddel er som følger:
-
-\begingroup
-\fontsize{12.0pt}{14.4pt}\selectfont
-\begin{longtable*}{lrr}
-\caption*{
-{\large Kjønn fordeling}
-} \\ 
-\toprule
-beskrivelse & N & prosent \\ 
-\midrule\addlinespace[2.5pt]
-Mann & 38 & 59.4 \\ 
-Kvinne & 26 & 40.6 \\ 
-Total & 64 & 100.0 \\ 
-\bottomrule
-\end{longtable*}
-\endgroup
+Fordelingen av lettere skadde pasienter med AIS 1 eller 2 (N = 960) og
+hardt skadde pasienter med AIS 3+ (N = 64) etter kjønn, aldersgrupper og
+fremkomstmiddel vises i Tabell~\ref{tbl-ais} nedenfor.
 
 \begingroup
 \fontsize{12.0pt}{14.4pt}\selectfont
-\begin{longtable*}{lrr}
-\caption*{
-{\large Aldersgrupper}
-} \\ 
+
+\begin{longtable}{lrrrr}
+
+\caption{\label{tbl-ais}Trafikkulykker}
+
+\tabularnewline
+
 \toprule
-Alder & N & prosent \\ 
+ & \multicolumn{2}{c}{\textbf{AIS 1 \& 2}} & \multicolumn{2}{c}{\textbf{AIS 3+}} \\ 
+\cmidrule(lr){2-3} \cmidrule(lr){4-5}
+Beskrivelse & N & Prosent & N & Prosent \\ 
 \midrule\addlinespace[2.5pt]
-0-16 & 3 & 4.7 \\ 
-17-24 & 8 & 12.5 \\ 
-25-44 & 13 & 20.3 \\ 
-45-64 & 26 & 40.6 \\ 
-65-79 & 10 & 15.6 \\ 
-80+ & 4 & 6.2 \\ 
-Total & 64 & 100.0 \\ 
+\multicolumn{5}{l}{Kjønn} \\[2.5pt] 
+\midrule\addlinespace[2.5pt]
+Kvinne & 395 & 41.1 & 26 & 40.6 \\ 
+Mann & 565 & 58.9 & 38 & 59.4 \\ 
+\midrule\addlinespace[2.5pt]
+\multicolumn{5}{l}{Alder} \\[2.5pt] 
+\midrule\addlinespace[2.5pt]
+0-14 & 92 & 9.6 & 1 & 1.6 \\ 
+15-24 & 162 & 16.9 & 10 & 15.6 \\ 
+25-44 & 344 & 35.8 & 13 & 20.3 \\ 
+45-64 & 253 & 26.4 & 26 & 40.6 \\ 
+65-79 & 82 & 8.5 & 10 & 15.6 \\ 
+80+ & 27 & 2.8 & 4 & 6.2 \\ 
+\midrule\addlinespace[2.5pt]
+\multicolumn{5}{l}{Fremkomstmiddel} \\[2.5pt] 
+\midrule\addlinespace[2.5pt]
+ATV/Firhjuling & 1 & 0.1 & 2 & 3.1 \\ 
+Annet spesifisert & 16 & 1.7 & - & - \\ 
+Buss & 32 & 3.3 & 1 & 1.6 \\ 
+El-sykkel & 21 & 2.2 & - & - \\ 
+Elektrisk sparkesykkel & 61 & 6.4 & 4 & 6.2 \\ 
+Lastebil & 4 & 0.4 & 1 & 1.6 \\ 
+Moped & 22 & 2.3 & - & - \\ 
+Motorsykkel & 41 & 4.3 & 4 & 6.2 \\ 
+Personbil/Varebil & 294 & 30.6 & 19 & 29.7 \\ 
+Ski/Snøbrett mv. & 3 & 0.3 & - & - \\ 
+Snøskuter & 3 & 0.3 & - & - \\ 
+Sparkesykkel & 4 & 0.4 & - & - \\ 
+Sykkel & 191 & 19.9 & 15 & 23.4 \\ 
+Til fots & 147 & 15.3 & 10 & 15.6 \\ 
+Trikk/tog/bane & 6 & 0.6 & 1 & 1.6 \\ 
+Ukjent & 69 & 7.2 & 4 & 6.2 \\ 
 \bottomrule
-\end{longtable*}
+
+\end{longtable}
+
 \endgroup
 
-\begingroup
-\fontsize{12.0pt}{14.4pt}\selectfont
-\begin{longtable*}{lrr}
-\caption*{
-{\large Fremkomsmiddel}
-} \\ 
-\toprule
-beskrivelse & N & prosent \\ 
-\midrule\addlinespace[2.5pt]
-Personbil/Varebil & 19 & 29.7 \\ 
-Sykkel & 15 & 23.4 \\ 
-Til fots & 10 & 15.6 \\ 
-Elektrisk sparkesykkel & 4 & 6.2 \\ 
-Motorsykkel & 4 & 6.2 \\ 
-Ukjent & 4 & 6.2 \\ 
-NA & 3 & 4.7 \\ 
-ATV/Firhjuling & 2 & 3.1 \\ 
-Buss & 1 & 1.6 \\ 
-Lastebil & 1 & 1.6 \\ 
-Trikk/tog/bane & 1 & 1.6 \\ 
-Total & 64 & 100.0 \\ 
-\bottomrule
-\end{longtable*}
-\endgroup
-
-\subsection{Lettere skadd AIS 1 og 2}\label{lettere-skadd-ais-1-og-2}
-
-Fordelingen av lettere skadde pasienter med AIS 1 eller 2 (N = 960)
-etter kjønn, aldersgrupper og fremkomstmiddel er som følger:
-
-\begingroup
-\fontsize{12.0pt}{14.4pt}\selectfont
-\begin{longtable*}{lrr}
-\caption*{
-{\large Kjønn fordeling}
-} \\ 
-\toprule
-beskrivelse & N & prosent \\ 
-\midrule\addlinespace[2.5pt]
-Mann & 565 & 58.9 \\ 
-Kvinne & 395 & 41.1 \\ 
-Total & 960 & 100.0 \\ 
-\bottomrule
-\end{longtable*}
-\endgroup
-
-\begingroup
-\fontsize{12.0pt}{14.4pt}\selectfont
-\begin{longtable*}{lrr}
-\caption*{
-{\large Aldersgrupper}
-} \\ 
-\toprule
-Alder & N & prosent \\ 
-\midrule\addlinespace[2.5pt]
-0-14 & 92 & 9.6 \\ 
-15-24 & 162 & 16.9 \\ 
-25-44 & 344 & 35.8 \\ 
-45-64 & 253 & 26.4 \\ 
-65-79 & 82 & 8.5 \\ 
-80+ & 27 & 2.8 \\ 
-Total & 960 & 100.0 \\ 
-\bottomrule
-\end{longtable*}
-\endgroup
-
-\begingroup
-\fontsize{12.0pt}{14.4pt}\selectfont
-\begin{longtable*}{lrr}
-\caption*{
-{\large Fremkomsmiddel}
-} \\ 
-\toprule
-beskrivelse & N & prosent \\ 
-\midrule\addlinespace[2.5pt]
-Personbil/Varebil & 294 & 30.6 \\ 
-Sykkel & 191 & 19.9 \\ 
-Til fots & 147 & 15.3 \\ 
-Ukjent & 69 & 7.2 \\ 
-Elektrisk sparkesykkel & 61 & 6.4 \\ 
-NA & 45 & 4.7 \\ 
-Motorsykkel & 41 & 4.3 \\ 
-Buss & 32 & 3.3 \\ 
-Moped & 22 & 2.3 \\ 
-El-sykkel & 21 & 2.2 \\ 
-Annet spesifisert & 16 & 1.7 \\ 
-Trikk/tog/bane & 6 & 0.6 \\ 
-Sparkesykkel & 4 & 0.4 \\ 
-Lastebil & 4 & 0.4 \\ 
-Ski/Snøbrett mv. & 3 & 0.3 \\ 
-Snøskuter & 3 & 0.3 \\ 
-ATV/Firhjuling & 1 & 0.1 \\ 
-Total & 960 & 100.0 \\ 
-\bottomrule
-\end{longtable*}
-\endgroup
+Tabell~\ref{tbl-ais} viser at flere menn enn kvinner er skadet i
+trafikkulykker, både når det gjelder alvorlige (59.4\%) og mindre
+alvorlige skader (58.9\%). Når det gjelder aldersfordeling, ser vi at
+antallet hardt skadde er høyest blant personer i aldersgruppen 45-64 år
+(40.6\%), mens de med lettere skader er mest representert i
+aldersgruppen 25-44 år (35.8\%). Fordelingen av fremkomstmidler ved
+trafikkulykker er relativt lik for både hardt og lettere skadde.
 
 
 
