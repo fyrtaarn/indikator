@@ -3,11 +3,11 @@ title: "FMDS første tertial 2024"
 subtitle: "`r format(Sys.Date(), '%d %B %Y')`"
 lang: no 
 language: no-language.yml 
-tbl-cap-location: bottom
+tbl-cap-location: top 
+toc-title: Innhold
 format:
   html:
     toc: true
-    toc-title: Innhold
     code-fold: true
     code-summary: "Vis kode"
     self-contained: true
@@ -54,7 +54,7 @@ popdub <- fmd[!is.na(lopenr) & duplicated(lopenr), ][!duplicated(lopenr), .N]
 acc <- fdd[kontaktarsakSkade == 1 & skadeSted == "V1"]
 ```
 
-Denne rapporten omfatter data fra Felles minimum datasett (FMDS), hentet fra Norsk pasientregister (NPR) for perioden januar til april 2024. Totalt er `r format(pop, big.mark = " ")` pasienter ble registeret, hvorav `r format(popdub, big.mark = " ")` pasienter hadde mer enn én skadehendelse. Pasienter med ugyldig personnummer er ekskludert (N = `r format(popna, big.mark = " ")`). Videre analyser gjelder bare for  pasienter involvert i trafikkulykker (N = `r format(dim(acc)[1], big.mark = " ")`).
+Denne rapporten omfatter data fra Felles minimum datasett (FMDS), hentet fra Norsk pasientregister (NPR) for perioden januar til april 2024. Totalt er `r format(pop, big.mark = " ")` pasienter registert, hvorav `r format(popdub, big.mark = " ")` pasienter hadde mer enn én skadehendelse. Pasienter med ugyldig personnummer er ekskludert (N = `r format(popna, big.mark = " ")`). Videre analyser gjelder bare for  pasienter involvert i trafikkulykker (N = `r format(dim(acc)[1], big.mark = " ")`).
 
 # Alvorlighetsgrad
 
@@ -65,14 +65,15 @@ Fordelingen av alvorlighetsgrad for ulykkeskade pasienter vises i @tbl-alvorlig 
 ```{r skadegrad}
 #| echo: false
 #| label: tbl-alvorlig
-#| tbl-cap: "Alvorlighetsgrad"
+#| tbl-cap: "Alvorlighetsgrad skade"
 
 grad <- show_pro(acc, "alvorlighetsgrad", kb, value = FALSE)
 n3 <- grad[beskrivelse %like% "3+", c(N)]
 n12 <- grad[beskrivelse %like% "Lite" | beskrivelse %like% "Moderat", sum(N, na.rm = T)]
 
+## data.table::setnames(grad, new=c("", "N", "Prosent"))
 gt(grad) |>
-  tab_header(title = "Alvorlighetsgrad skade")
+  cols_label(beskrivelse = " ")
 ```
 
 ## Hardt skadd AIS 3+
@@ -95,7 +96,7 @@ gt(sex3) |>
 #| echo: false
 
 dt3[fodtAar_FMDS > 0, ageFMDS := lubridate::year(skadeDato) - fodtAar]
-age3 <- do_agegroup(dt3, "ageFMDS", c(0, 15, 25, 45, 65, 80, Inf), "agegp")
+age3 <- do_agegroup(dt3, "ageFMDS", c(0, 17, 25, 45, 65, 80, Inf), "agegp")
 
 ais3 <- show_pro(age3, "agegp")
 data.table::setnames(ais3, "agegp", "Alder")
