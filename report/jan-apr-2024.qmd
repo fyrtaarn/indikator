@@ -7,7 +7,7 @@ tbl-cap-location: top
 toc-title: Innhold
 format:
   html:
-    toc: true
+    toc: false 
     code-fold: true
     code-summary: "Vis kode"
     self-contained: true
