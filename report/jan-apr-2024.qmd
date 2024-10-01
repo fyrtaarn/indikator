@@ -56,9 +56,9 @@ popdub <- fmd[!is.na(lopenr) & duplicated(lopenr), ][!duplicated(lopenr), .N]
 acc <- fdd[kontaktarsakSkade == 1 & skadeSted == "V1"]
 ```
 
-Denne rapporten omfatter data fra Felles minimum datasett (FMDS) i Norsk pasientregister (NPR), hentet fra deltakende helse institusjoner i Fyrtårnprosjektet for perioden januar til april 2024. Totalt er `r format(pop, big.mark = " ")` pasienter registert, hvorav `r format(popdub, big.mark = " ")` pasienter hadde mer enn én skadehendelse. Pasienter med ugyldig personnummer er ekskludert (N = `r format(popna, big.mark = " ")`). Videre analyser gjelder bare for  pasienter involvert i trafikkulykker (N = `r format(dim(acc)[1], big.mark = " ")`).
+Denne rapporten omfatter data fra Felles minimum datasett (FMDS) i Norsk pasientregister (NPR), hentet fra deltakende helseinstitusjoner i Fyrtårnprosjektet for perioden januar til april 2024. Totalt er `r format(pop, big.mark = " ")` pasienter registert, hvorav `r format(popdub, big.mark = " ")` pasienter hadde mer enn én skadehendelse. Pasienter med ugyldig personnummer er ekskludert (N = `r format(popna, big.mark = " ")`). Videre analyser gjelder bare for pasienter involvert i trafikkulykker (N = `r format(dim(acc)[1], big.mark = " ")`).
 
-Det er en vis usikkerhet med tallene som blir presentert her fordi noen pasienter med samme skadde kan bli telt flere ganger dersom de er registrert ved ulike sykehus eller legevakter. Vi jobber fortsatt med å utvikle metoder for å minimere slike tilfeller. 
+Det er en viss usikkerhet knyttet til tallene som presenteres her, da enkelte pasienter med samme skade kan være registrert flere ganger dersom de har vært behandlet ved ulike sykehus eller legevakter. Vi jobber fortsatt med å utvikle metoder for å minimere slike tilfeller. 
  
 
 # Alvorlighetsgrad
